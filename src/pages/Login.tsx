@@ -29,7 +29,7 @@ const ROLES: RoleConfig[] = [
     title: 'Administrateur & Direction d\'Atelier',
     shortLabel: 'Administrateur',
     badgeLabel: 'Administrateur',
-    color: '#059669',
+    color: '#0284c7',
     icon: '🏢',
     heroTitle: 'Espace Administrateur & Direction !',
     heroSubtitle: 'Gérez l\'activité globale de votre boutique, suivez vos techniciens, consultez vos bilans comptables et personnalisez vos paramètres.',
@@ -47,7 +47,7 @@ const ROLES: RoleConfig[] = [
     title: 'Technicien & Réparateur',
     shortLabel: 'Technicien',
     badgeLabel: 'Atelier & Réparation',
-    color: '#0284c7',
+    color: '#059669',
     icon: '🔧',
     heroTitle: 'Espace Réparation & Diagnostic !',
     heroSubtitle: 'Accédez aux fiches d\'intervention, mettez à jour l\'état d\'avancement des réparations et notifiez vos diagnostics techniques.',
@@ -307,9 +307,9 @@ const Login = () => {
         <div style={{ 
           flex: '1 1 400px', 
           background: selectedRole === 'manager' 
-            ? 'linear-gradient(145deg, #064e3b 0%, #059669 50%, #10b981 100%)' 
-            : selectedRole === 'technician' 
             ? 'linear-gradient(145deg, #0369a1 0%, #0284c7 50%, #38bdf8 100%)' 
+            : selectedRole === 'technician' 
+            ? 'linear-gradient(145deg, #064e3b 0%, #059669 50%, #10b981 100%)' 
             : 'linear-gradient(145deg, #b45309 0%, #d97706 50%, #f59e0b 100%)', 
           color: '#ffffff', 
           padding: '3rem 2.5rem',
@@ -424,15 +424,19 @@ const Login = () => {
                 display: 'inline-flex', 
                 alignItems: 'center', 
                 gap: '10px', 
-                backgroundColor: '#f0fdf4', 
-                border: '1px solid #bbf7d0', 
+                backgroundColor: selectedRole === 'manager' ? '#f0f9ff' : selectedRole === 'technician' ? '#f0fdf4' : '#fffbeb', 
+                border: selectedRole === 'manager' ? '1px solid #bae6fd' : selectedRole === 'technician' ? '1px solid #bbf7d0' : '1px solid #fde68a', 
                 borderRadius: '12px', 
                 padding: '6px 14px' 
               }}>
                 <div style={{ backgroundColor: currentRoleConfig.color, color: 'white', padding: '4px', borderRadius: '6px' }}>
                   <Wrench size={16} />
                 </div>
-                <span style={{ fontWeight: 700, color: '#166534', fontSize: '0.875rem' }}>
+                <span style={{ 
+                  fontWeight: 700, 
+                  color: selectedRole === 'manager' ? '#0369a1' : selectedRole === 'technician' ? '#166534' : '#92400e', 
+                  fontSize: '0.875rem' 
+                }}>
                   {activeShopName}
                 </span>
               </div>
