@@ -29,7 +29,7 @@ const ROLES: RoleConfig[] = [
     title: 'Administrateur & Direction d\'Atelier',
     shortLabel: 'Administrateur',
     badgeLabel: 'Administrateur',
-    color: '#2563eb',
+    color: '#059669',
     icon: '🏢',
     heroTitle: 'Espace Administrateur & Direction !',
     heroSubtitle: 'Gérez l\'activité globale de votre boutique, suivez vos techniciens, consultez vos bilans comptables et personnalisez vos paramètres.',
@@ -47,7 +47,7 @@ const ROLES: RoleConfig[] = [
     title: 'Technicien & Réparateur',
     shortLabel: 'Technicien',
     badgeLabel: 'Atelier & Réparation',
-    color: '#059669',
+    color: '#0284c7',
     icon: '🔧',
     heroTitle: 'Espace Réparation & Diagnostic !',
     heroSubtitle: 'Accédez aux fiches d\'intervention, mettez à jour l\'état d\'avancement des réparations et notifiez vos diagnostics techniques.',
@@ -306,14 +306,19 @@ const Login = () => {
         {/* LEFT PANEL: HERO & ROLE PERMISSIONS BANNER */}
         <div style={{ 
           flex: '1 1 400px', 
-          background: 'linear-gradient(145deg, #1d4ed8 0%, #2563eb 50%, #3b82f6 100%)', 
+          background: selectedRole === 'manager' 
+            ? 'linear-gradient(145deg, #064e3b 0%, #059669 50%, #10b981 100%)' 
+            : selectedRole === 'technician' 
+            ? 'linear-gradient(145deg, #0369a1 0%, #0284c7 50%, #38bdf8 100%)' 
+            : 'linear-gradient(145deg, #b45309 0%, #d97706 50%, #f59e0b 100%)', 
           color: '#ffffff', 
           padding: '3rem 2.5rem',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',
           position: 'relative',
-          overflow: 'hidden'
+          overflow: 'hidden',
+          transition: 'background 0.3s ease'
         }}>
           {/* Decorative background circle */}
           <div style={{
@@ -418,15 +423,15 @@ const Login = () => {
                 display: 'inline-flex', 
                 alignItems: 'center', 
                 gap: '10px', 
-                backgroundColor: '#eff6ff', 
-                border: '1px solid #bfdbfe', 
+                backgroundColor: '#f0fdf4', 
+                border: '1px solid #bbf7d0', 
                 borderRadius: '12px', 
                 padding: '6px 14px' 
               }}>
-                <div style={{ backgroundColor: '#2563eb', color: 'white', padding: '4px', borderRadius: '6px' }}>
+                <div style={{ backgroundColor: currentRoleConfig.color, color: 'white', padding: '4px', borderRadius: '6px' }}>
                   <Wrench size={16} />
                 </div>
-                <span style={{ fontWeight: 700, color: '#1e3a8a', fontSize: '0.875rem' }}>
+                <span style={{ fontWeight: 700, color: '#166534', fontSize: '0.875rem' }}>
                   {activeShopName}
                 </span>
               </div>
@@ -681,7 +686,7 @@ const Login = () => {
                     fontWeight: 500,
                     transition: 'color 0.2s'
                   }}
-                  onMouseOver={(e) => e.currentTarget.style.color = '#2563eb'}
+                  onMouseOver={(e) => e.currentTarget.style.color = currentRoleConfig.color}
                   onMouseOut={(e) => e.currentTarget.style.color = '#64748b'}
                 >
                   Mot de passe oublié ?
@@ -694,7 +699,7 @@ const Login = () => {
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '1.5rem', paddingTop: '1.25rem', borderTop: '1px solid #f1f5f9', fontSize: '0.8rem', color: '#64748b' }}>
             <div>
               <span>Nouvel atelier ? </span>
-              <Link to="/inscription" style={{ color: '#2563eb', fontWeight: 600, textDecoration: 'none' }}>
+              <Link to="/inscription" style={{ color: currentRoleConfig.color, fontWeight: 600, textDecoration: 'none' }}>
                 Créer un compte
               </Link>
             </div>
