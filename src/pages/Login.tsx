@@ -354,6 +354,7 @@ const Login = () => {
 
             {/* Dynamic Hero Title & Description */}
             <h1 style={{ 
+              color: '#ffffff',
               fontSize: '2.1rem', 
               fontWeight: 800, 
               lineHeight: 1.25, 
