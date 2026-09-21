@@ -29,7 +29,7 @@ const ROLES: RoleConfig[] = [
     title: 'Administrateur & Direction d\'Atelier',
     shortLabel: 'Administrateur',
     badgeLabel: 'Administrateur',
-    color: '#0284c7',
+    color: '#633219',
     icon: '🏢',
     heroTitle: 'Espace Administrateur & Direction !',
     heroSubtitle: 'Gérez l\'activité globale de votre boutique, suivez vos techniciens, consultez vos bilans comptables et personnalisez vos paramètres.',
@@ -307,7 +307,7 @@ const Login = () => {
         <div style={{ 
           flex: '1 1 400px', 
           background: selectedRole === 'manager' 
-            ? 'linear-gradient(145deg, #0369a1 0%, #0284c7 50%, #38bdf8 100%)' 
+            ? 'linear-gradient(145deg, #3d1c0b 0%, #5c2d15 50%, #874624 100%)' 
             : selectedRole === 'technician' 
             ? 'linear-gradient(145deg, #064e3b 0%, #059669 50%, #10b981 100%)' 
             : 'linear-gradient(145deg, #b45309 0%, #d97706 50%, #f59e0b 100%)', 
@@ -424,8 +424,8 @@ const Login = () => {
                 display: 'inline-flex', 
                 alignItems: 'center', 
                 gap: '10px', 
-                backgroundColor: selectedRole === 'manager' ? '#f0f9ff' : selectedRole === 'technician' ? '#f0fdf4' : '#fffbeb', 
-                border: selectedRole === 'manager' ? '1px solid #bae6fd' : selectedRole === 'technician' ? '1px solid #bbf7d0' : '1px solid #fde68a', 
+                backgroundColor: selectedRole === 'manager' ? '#faf5f0' : selectedRole === 'technician' ? '#f0fdf4' : '#fffbeb', 
+                border: selectedRole === 'manager' ? '1px solid #ebd3c3' : selectedRole === 'technician' ? '1px solid #bbf7d0' : '1px solid #fde68a', 
                 borderRadius: '12px', 
                 padding: '6px 14px' 
               }}>
@@ -434,7 +434,7 @@ const Login = () => {
                 </div>
                 <span style={{ 
                   fontWeight: 700, 
-                  color: selectedRole === 'manager' ? '#0369a1' : selectedRole === 'technician' ? '#166534' : '#92400e', 
+                  color: selectedRole === 'manager' ? '#5c2d15' : selectedRole === 'technician' ? '#166534' : '#92400e', 
                   fontSize: '0.875rem' 
                 }}>
                   {activeShopName}
